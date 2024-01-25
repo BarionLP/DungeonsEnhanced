@@ -1,0 +1,17 @@
+{
+  "placement": {
+    "type": "structure_gel:grid_placement",
+    "allowed_near_spawn": false,
+    "frequency": 0.39,
+    "offset": 44,
+    "salt": 1969192730,
+    "spacing": 56,
+    "structure": "dungeons_enhanced:withered_prison"
+  },
+  "structures": [
+    {
+      "structure": "dungeons_enhanced:withered_prison",
+      "weight": 1
+    }
+  ]
+}

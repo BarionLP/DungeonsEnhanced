@@ -18,4 +18,5 @@ public class DEJigsawTypes {
     public static final Registrar.Static<JigsawCapabilityType<DELargeDungeon.Capability>> LARGE_DUNGEON = HANDLER.createStatic(DELargeDungeon.ID, () -> () -> DELargeDungeon.Capability.CODEC);
     public static final Registrar.Static<JigsawCapabilityType<DEMonsterMaze.Capability>> MONSTER_MAZE = HANDLER.createStatic(DEMonsterMaze.ID, () -> () -> DEMonsterMaze.Capability.CODEC);
     public static final Registrar.Static<JigsawCapabilityType<DEPillagerCamp.Capability>> PILLAGER_CAMP = HANDLER.createStatic(DEPillagerCamp.ID, () -> () -> DEPillagerCamp.Capability.CODEC);
+    public static final Registrar.Static<JigsawCapabilityType<DEWitheredPrison.Capability>> WITHERED_PRISON = HANDLER.createStatic(DEWitheredPrison.ID, () -> () -> DEWitheredPrison.Capability.CODEC);
 }

@@ -20,6 +20,7 @@ public class DETemplatePools {
     public static final ResourceKey<StructureTemplatePool> LARGE_DUNGEON = HANDLER.key("large_dungeon/root");
     public static final ResourceKey<StructureTemplatePool> MONSTER_MAZE = HANDLER.key("monster_maze/root");
     public static final ResourceKey<StructureTemplatePool> PILLAGER_CAMP = HANDLER.key("pillager_camp/root");
+    public static final ResourceKey<StructureTemplatePool> WITHERED_PRISON = HANDLER.key("withered_prison/root");
 
     private static void init(BootstapContext<StructureTemplatePool> context){
         DECastle.pool(context);
@@ -29,5 +30,6 @@ public class DETemplatePools {
         DELargeDungeon.pool(context);
         DEMonsterMaze.pool(context);
         DEPillagerCamp.pool(context);
+        DEWitheredPrison.pool(context);
     }
 }

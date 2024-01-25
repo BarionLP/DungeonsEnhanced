@@ -1,6 +1,7 @@
 package com.barion.dungeons_enhanced;
 
 import com.barion.dungeons_enhanced.data.DETags;
+import com.barion.dungeons_enhanced.registry.DEStructures;
 import com.legacy.structure_gel.api.config.StructureConfig;
 import com.legacy.structure_gel.api.registry.registrar.StructureRegistrar;
 import net.minecraft.resources.ResourceKey;
@@ -51,6 +52,7 @@ public class DEConfig {
             tagsStructure(builder, DEStructures.TREE_HOUSE, BiomeTags.IS_JUNGLE);
             tagsNoWaterStructure(builder, DEStructures.WATCH_TOWER, Tags.Biomes.IS_COLD_OVERWORLD);
             tagsStructure(builder, DEStructures.WITCH_TOWER, BiomeTags.IS_TAIGA);
+            tagsStructure(builder, DEStructures.WITHERED_PRISON, BiomeTags.IS_NETHER);
         }
 
         @SafeVarargs

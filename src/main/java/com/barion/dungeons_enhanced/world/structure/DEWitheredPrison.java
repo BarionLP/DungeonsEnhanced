@@ -9,7 +9,6 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -17,44 +16,40 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSeriali
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
-public class DEPillagerCamp{
-    public static final String ID = "pillager_camp";
+public class DEWitheredPrison {
+    public static final String ID = "withered_prison";
 
-    public static class Capability implements JigsawCapability{
+    public static class Capability implements JigsawCapability {
         public static final Capability INSTANCE = new Capability();
         public static final Codec<Capability> CODEC = Codec.unit(INSTANCE);
 
         @Override
-        public JigsawCapabilityType<?> getType() {return DEJigsawTypes.PILLAGER_CAMP.get();}
+        public JigsawCapabilityType<?> getType() {return DEJigsawTypes.WITHERED_PRISON.get();}
         @Override
         public IPieceFactory getPieceFactory() {return Piece::new;}
     }
+
     public static class Piece extends ExtendedJigsawStructurePiece {
         public Piece(IPieceFactory.Context context) {super(context);}
         public Piece(StructurePieceSerializationContext serializationContext, CompoundTag nbt) {super(serializationContext, nbt);}
 
         @Override
-        public StructurePieceType getType() {return DEStructures.PILLAGER_CAMP.getPieceType().get();}
+        public StructurePieceType getType() {return DEStructures.WITHERED_PRISON.getPieceType().get();}
         @Override
         public void handleDataMarker(String key, BlockPos pos, ServerLevelAccessor level, RandomSource random, BoundingBox box) {}
     }
 
     public static void pool(BootstapContext<StructureTemplatePool> context){
-        var registry = new JigsawRegistryHelper(DungeonsEnhanced.MOD_ID, "pillager_camp/", context);
-        registry.registerBuilder().pools(registry.poolBuilder().names("tent/general").maintainWater(false)).register(DETemplatePools.PILLAGER_CAMP);
+        var registry = new JigsawRegistryHelper(DungeonsEnhanced.MOD_ID, "withered_prison/", context);
+        var basicPool = registry.poolBuilder().maintainWater(true);
+        registry.registerBuilder().pools(basicPool.clone().names("main")).register(DETemplatePools.WITHERED_PRISON);
 
-        var basicPool = registry.poolBuilder().maintainWater(false);
-        var SleepingTents = basicPool.clone().names("tent/sleep1", "tent/sleep2");
-        var Kitchen = basicPool.clone().names("tent/kitchen");
-        var Decoration = basicPool.clone().names("decoration/campfire", "decoration/cage1");
-        var Pillars = basicPool.clone().names("decoration/bell", "decoration/pillar");
-        var VanillaDecoration = basicPool.clone().namesR(mcPiece("logs"), mcPiece("targets"), mcPiece("tent1"), mcPiece("tent2"));
+        var bridges = basicPool.clone().names("bridge", "bridge_broken");
+        var pillars = basicPool.clone().names("bridge_pillar_1", "bridge_pillar_2");
+        var mainExtensions = basicPool.clone().names("main_bridge_extension");
 
-        registry.registerBuilder().pools(basicPool.clone().names("plate/var1", "plate/var2")).projection(StructureTemplatePool.Projection.TERRAIN_MATCHING).register("feature_plates");
-        registry.register("features", JigsawPoolBuilder.collect(SleepingTents.weight(2), Kitchen.weight(2), VanillaDecoration.weight(2), Decoration.weight(3), Pillars.weight(1)));
-    }
-
-    private static ResourceLocation mcPiece(String key){
-        return new ResourceLocation("pillager_outpost/feature_" + key);
+        registry.register("bridge", bridges);
+        registry.register("pillar", pillars);
+        registry.register("main_extension", mainExtensions);
     }
 }

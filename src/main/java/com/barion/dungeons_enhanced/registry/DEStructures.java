@@ -1,6 +1,5 @@
-package com.barion.dungeons_enhanced;
+package com.barion.dungeons_enhanced.registry;
 
-import com.barion.dungeons_enhanced.registry.DETemplatePools;
 import com.barion.dungeons_enhanced.world.structure.*;
 import com.barion.dungeons_enhanced.world.structure.prefabs.*;
 import com.legacy.structure_gel.api.registry.RegistrarHolder;
@@ -59,6 +58,7 @@ public class DEStructures {
     public static final StructureRegistrar<DEGroundStructure> TOWER_OF_THE_UNDEAD;
     public static final StructureRegistrar<DEGroundStructure> WATCH_TOWER;
     public static final StructureRegistrar<DEGroundStructure> WITCH_TOWER;
+    public static final StructureRegistrar<ExtendedJigsawStructure> WITHERED_PRISON;
 
     private DEStructures() {}
 
@@ -289,6 +289,14 @@ public class DEStructures {
                         .terrainAdjustment(TerrainAdjustment.BEARD_THIN)
                 .popStructure()
                 .build();
+
+        WITHERED_PRISON = StructureRegistrar.jigsawBuilder(location(DEWitheredPrison.ID))
+                .placement(()-> gridPlacement(56, 39).build(DEStructures.WITHERED_PRISON))
+                .addPiece(()-> DEWitheredPrison.Piece::new)
+                .pushStructure((context, settings)-> extendedJigsawStructure(context, settings, DEWitheredPrison.Capability.INSTANCE, DETemplatePools.WITHERED_PRISON, 8, height(60)).build())
+                    .dimensions(Level.NETHER)
+                .popStructure()
+                .build();
     }
 
     public static final StructureRegistrar<?>[] ALL_STRUCTURE_REGISTRARS = {
@@ -317,7 +325,8 @@ public class DEStructures {
             TOWER_OF_THE_UNDEAD,
             TREE_HOUSE,
             WATCH_TOWER,
-            WITCH_TOWER
+            WITCH_TOWER,
+            WITHERED_PRISON,
     };
 
     private static ConstantHeight height(int y) {return ConstantHeight.of(new VerticalAnchor.Absolute(y));}

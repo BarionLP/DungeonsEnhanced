@@ -1,7 +1,7 @@
 package com.barion.dungeons_enhanced.world.structure.prefabs;
 
-import com.barion.dungeons_enhanced.DEStructures;
 import com.barion.dungeons_enhanced.DEUtil;
+import com.barion.dungeons_enhanced.registry.DEStructures;
 import com.barion.dungeons_enhanced.world.gen.DETerrainAnalyzer;
 import com.barion.dungeons_enhanced.world.structure.prefabs.utils.DEPieceAssembler;
 import com.barion.dungeons_enhanced.world.structure.prefabs.utils.DEStructureTemplates;
@@ -19,8 +19,8 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-import static com.barion.dungeons_enhanced.DEStructures.*;
 import static com.barion.dungeons_enhanced.DEUtil.pieceBuilder;
+import static com.barion.dungeons_enhanced.registry.DEStructures.*;
 
 public class DEGroundStructure extends DEBaseStructure {
 
