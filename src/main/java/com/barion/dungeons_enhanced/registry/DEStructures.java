@@ -293,7 +293,7 @@ public class DEStructures {
         WITHERED_PRISON = StructureRegistrar.jigsawBuilder(location(DEWitheredPrison.ID))
                 .placement(()-> gridPlacement(56, 39).build(DEStructures.WITHERED_PRISON))
                 .addPiece(()-> DEWitheredPrison.Piece::new)
-                .pushStructure((context, settings)-> extendedJigsawStructure(context, settings, DEWitheredPrison.Capability.INSTANCE, DETemplatePools.WITHERED_PRISON, 8, height(60)).build())
+                .pushStructure((context, settings)-> extendedJigsawStructure(context, settings, DEWitheredPrison.Capability.INSTANCE, DETemplatePools.WITHERED_PRISON, 9, height(28)).maxDistanceFromCenter(120).build())
                     .dimensions(Level.NETHER)
                 .popStructure()
                 .build();
